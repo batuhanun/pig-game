@@ -17,6 +17,8 @@ let dicePicture = document.querySelector(".dice");
 const diceButton = document.querySelector(".btn.btn--roll");
 const holdButton = document.querySelector(".btn.btn--hold");
 const newGameButton = document.querySelector(".btn.btn--new");
+let player1Name = document.querySelector("#name--0");
+let player2Name = document.querySelector("#name--1");
 const playerActive = document.querySelectorAll(".player");
 
 const rollDice = function () {
@@ -71,6 +73,18 @@ const holdActions = function () {
   }
   playerActiveStyleChanging();
   playerTurn++;
+  winnerActions();
+};
+
+const winnerActions = function () {
+  if (player1TotalScore >= 20) {
+    document.querySelector("#name--0").textContent = "Player 1 Won!";
+    playerActive[0].classList.add("player--winner");
+  }
+  if (player2TotalScore >= 20) {
+    document.querySelector("#name--1").textContent = "Player 2 Won!";
+    playerActive[1].classList.add("player--winner");
+  }
 };
 
 const newGameActions = function () {
@@ -87,6 +101,8 @@ const newGameActions = function () {
     playerActive[1].classList.remove("player--active");
     playerActive[0].classList.add("player--active");
   }
+  playerActive[0].classList.remove("player--winner");
+  playerActive[1].classList.remove("player--winner");
 };
 
 diceButton.addEventListener("click", rollDice);
