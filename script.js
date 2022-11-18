@@ -23,7 +23,7 @@ const playerActive = document.querySelectorAll(".player");
 
 const rollDice = function () {
   dice = Math.trunc(Math.random() * 6) + 1;
-  dicePicture.src = `http://127.0.0.1:8080/dice-${String(dice)}.png`;
+  dicePicture.src = `dice-${String(dice)}.png`;
   currentIncrease();
 };
 
